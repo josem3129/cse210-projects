@@ -1,12 +1,12 @@
 public class UserQuestion
 {
-    public List<string> _QuestionList = new List<string>();
+    public List<string> _questionList = new List<string>();
 
     public string _questionPrompt;
 
     public void addingPrompt()
     {
-        _QuestionList.Add(_questionPrompt);
+        _questionList.Add(_questionPrompt);
     }
     public string DisplayQuestion()
     {
@@ -14,8 +14,8 @@ public class UserQuestion
         
         
         var question = new Random();
-        int index = question.Next(_QuestionList.Count);
-        string RandomeQestion = _QuestionList[index];
+        int index = question.Next(_questionList.Count);
+        string RandomeQestion = _questionList[index];
 
         return RandomeQestion;
         
