@@ -1,3 +1,4 @@
+Date: 1/13/2023 - Prompt: What was the best part of my day? sleep.
 Date: 1/11/2023 - Prompt: If I had one thing I could do over today, what would it be? answer1.
 Date: 1/11/2023 - Prompt: Who was the most interesting person I interacted with today? answer 2.
 Date: 1/11/2023 - Prompt: Who was the most interesting person I interacted with today? answer 3.

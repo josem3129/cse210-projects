@@ -1,12 +1,12 @@
 public class Display 
 {
-    public List<string> _JuranlEntry = new List<string>();  
+    public List<string> _journalEntry = new List<string>();  
 
     public void DisplayChoise()
     {
         
         
-        foreach (string journal in _JuranlEntry)
+        foreach (string journal in _journalEntry)
         {   
             string[] parts = journal.Split("?");
 

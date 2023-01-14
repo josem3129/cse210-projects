@@ -2,16 +2,16 @@ public class JurnalWrite
 {
     
     //
-    public string _UserAnswer;
-    public string _QuestionUse;
+    public string _userAnswer;
+    public string _questionUse;
 
-    public string DisplayJurnal ()
+    public string displayJurnal ()
     {
         DateTime TimeStamp = DateTime.Now;
         string dateText = TimeStamp.ToShortDateString();
 
         
-        string display = ($"Date: {dateText} - Prompt: {_QuestionUse} {_UserAnswer}.");
+        string display = ($"Date: {dateText} - Prompt: {_questionUse} {_userAnswer}.");
         return display;
 
     }

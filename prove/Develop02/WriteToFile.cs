@@ -1,4 +1,4 @@
-public class WriteAllLines
+public class _writeAllLines
 {
     public List<string> Lines = new List<string>();
 
@@ -9,7 +9,7 @@ public class WriteAllLines
 
        string fileName = "journal.txt";
        
-       Display filedisplay = new Display();
+       _display filedisplay = new _display();
 
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
