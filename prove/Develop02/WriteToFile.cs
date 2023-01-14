@@ -1,6 +1,6 @@
-public class _writeAllLines
+public class WriteAllLines
 {
-    public List<string> Lines = new List<string>();
+    public List<string> _linesRead = new List<string>();
 
     public void PrintLines ()
     {
@@ -9,12 +9,12 @@ public class _writeAllLines
 
        string fileName = "journal.txt";
        
-       _display filedisplay = new _display();
+       Display filedisplay = new Display();
 
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
             
-            foreach (string file in Lines)
+            foreach (string file in _linesRead)
             {
                 outputFile.WriteLine(file);
                 
