@@ -24,20 +24,14 @@ public class listingActivity : activityDescription
         string randomQuestion = _promptList[index];
         
         //begening prompt
-        Console.Clear();
-        Console.WriteLine(DisplayBegeningPrompt());
-
-        Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certin area./n");
-        Console.Write("How long, in seconds, would you like for your session? ");
-      
-        string duration = Console.ReadLine();
-        _UserDuration = int.Parse(duration);
+        DisplayBegeningPrompt("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certin area./n");
+        int duration = DurationOfactivity();
 
         Console.Clear();
 
 
         DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(_UserDuration);
+        DateTime futureTime = startTime.AddSeconds(duration);
         DateTime currentTime;
 
         //clear console and displays ready and waits a couple seconds to start.

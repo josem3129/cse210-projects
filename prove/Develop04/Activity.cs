@@ -3,44 +3,65 @@ public class activityDescription
     // This class is the base class it initiate protective variables for the other classes 
     // some of this varibales are the begening prompt and the endeing prompt 
     // another one is the duartion that user enters. 
-    protected string _activityPrompt;
+    private string _activityName;
 
-    protected int _UserDuration;
+    protected string _UserDuration;
+    protected List<int> _durationList= new List<int>();
 
     public string GetBegeningPrommpt()
     {
-        return _activityPrompt;
+        return _activityName;
     }
 
     public void SetBegeningPrompt(String activityPrompt)
     {
-        _activityPrompt = activityPrompt;
+        _activityName = activityPrompt;
     }
 
-    public int GeUserDuration()
+    public string GeUserDuration()
     {
         return _UserDuration;
     }
 
-    public void SetUserDuration(int userDuration)
+    public void SetUserDuration(string userDuration)
     {
         _UserDuration = userDuration;
     }
 
     public activityDescription()
     {
-        _UserDuration = 30;
+        _UserDuration = "30";
+        _activityName = "unknown";
     }
-
-    public string DisplayBegeningPrompt()
+    public activityDescription(string activityName)
     {
-        return $"Welcome to the {_activityPrompt}!\n ";
+        
+        _activityName = activityName;
     }
 
+    public void DisplayBegeningPrompt(string activityPrompt)
+    {
+         // clears console then welcomes user with a pormpt and ask how long (in seconds) they would like to run this activity
+        Console.Clear();
+        Console.WriteLine($"Welcome to {_activityName}");
+        Console.WriteLine(activityPrompt);
+        Console.Write("How long, in seconds, would you like for your session? ");
+    }
+
+    public int DurationOfactivity()
+    {
+        _UserDuration = Console.ReadLine();
+
+        int newNUm = int.Parse(_UserDuration);
+
+        _durationList.Add(newNUm);
+
+        return newNUm;
+    }
     public string DisplayUserDuration()
     {
         string duration = _UserDuration.ToString();
-        return $"You have completed another {duration} second of the {_activityPrompt}";
+        return $"You have completed another {duration} second of the {_activityName}";
     }
 
     // this method does the waiting or loading animation 
@@ -53,7 +74,7 @@ public class activityDescription
 
         do
         {
-            
+            Thread.Sleep(550);
             Console.Write("\b \b");
             Console.Write("/"); 
             Thread.Sleep(550);
@@ -89,5 +110,11 @@ public class activityDescription
         Console.Write("\b \b");
         Console.Write("1");
         Console.Write("\b \b");
+    }
+    public int DurationOfActivity()
+    {
+        int durationNUm = int.Parse(_UserDuration);
+        int total = durationNUm;
+        return total;
     }
 }

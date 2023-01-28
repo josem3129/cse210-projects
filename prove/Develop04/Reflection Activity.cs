@@ -31,19 +31,12 @@ public class reflectionActivity : activityDescription
 
         };
 
-        Console.Clear();
-        Console.WriteLine(DisplayBegeningPrompt());
-
-        Console.WriteLine("This activity will help you refelct on items in your life when you have shown strength and resilience. This will help oyu recognize the power you have and how you can use it in other aspects of your life.");
-
-        Console.Write("\nHow long, in seconds, would you like for your session? ");
-        string duration = Console.ReadLine();
-
-        _UserDuration = int.Parse(duration);
+        DisplayBegeningPrompt("This activity will help you refelct on items in your life when you have shown strength and resilience. This will help oyu recognize the power you have and how you can use it in other aspects of your life.");
+        int duration = DurationOfactivity();
 
         // this finds the current time and add the seconds that user input
         DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(_UserDuration);
+        DateTime futureTime = startTime.AddSeconds(duration);
         DateTime currentTime;
 
         //clear console and displays ready and waits a couple seconds to start.

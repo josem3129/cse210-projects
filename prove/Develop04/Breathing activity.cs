@@ -1,25 +1,18 @@
 public class breathingActivity : activityDescription
 {
-    public breathingActivity(): base()
+    public breathingActivity(string name): base(name)
     {
 
     }
     public void BreathingExercise() 
     {
         // clears console then welcomes user with a pormpt and ask how long (in seconds) they would like to run this activity
-        Console.Clear();
-        Console.WriteLine(DisplayBegeningPrompt());
-
-        Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.\n");
-
-        Console.Write("How long, in seconds, would you like for your session? ");
-        string duration = Console.ReadLine();
-
-        _UserDuration = int.Parse(duration);
+        DisplayBegeningPrompt("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.\n");
+        int duration = DurationOfactivity();
 
         // this finds the current time and add the seconds that user input
         DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(_UserDuration);
+        DateTime futureTime = startTime.AddSeconds(duration);
         DateTime currentTime;
 
         //clear console and displays ready and waits a couple seconds to start.
