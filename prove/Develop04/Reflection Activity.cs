@@ -6,6 +6,7 @@ public class reflectionActivity : activityDescription
     private List<string> _thinkPrompt;
     private List<string> _reflectPrompt;
 
+    
     public void refectionExercise()
     {
         _thinkPrompt = new List<string>()

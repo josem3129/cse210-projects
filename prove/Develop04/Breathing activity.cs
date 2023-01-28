@@ -1,9 +1,5 @@
 public class breathingActivity : activityDescription
 {
-    public breathingActivity(string name): base(name)
-    {
-
-    }
     public void BreathingExercise() 
     {
         // clears console then welcomes user with a pormpt and ask how long (in seconds) they would like to run this activity

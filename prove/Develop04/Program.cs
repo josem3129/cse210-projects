@@ -24,7 +24,7 @@ class Program
             switch(choise) 
             {
             case "1":
-                breathingActivity activit1 = new breathingActivity("Breathing activity");
+                breathingActivity activit1 = new breathingActivity();
                 activit1.SetBegeningPrompt("Breathing activity");
                 activit1.BreathingExercise();
                 timeSpentList.Add(activit1.DurationOfActivity());
