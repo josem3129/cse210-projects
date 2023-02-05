@@ -3,13 +3,13 @@ public class ChecklistGoal : GoalsDescription
     private string _bonusPoints;
     private string _amountOftimes;
     private string _amountOftimesDone;
-    private List<string> _goalsRecordedList;
+    private List<string> _goalsRecordedList = new List<string>();
 
       public string GetAmountOftimesDone()
     {
         return _amountOftimesDone;
     }
-    public void SetAmountOftimessDone(string amountOftimesDone)
+    public void SetAmountOftimesDone(string amountOftimesDone)
     {
         _amountOftimesDone = amountOftimesDone;
     }    
@@ -26,7 +26,7 @@ public class ChecklistGoal : GoalsDescription
     {
         return _amountOftimes;
     }
-    public void SetAmountOftimess(string amountOftimes)
+    public void SetAmountOftimes(string amountOftimes)
     {
         _amountOftimes = amountOftimes;
     }
@@ -44,38 +44,36 @@ public class ChecklistGoal : GoalsDescription
         if (_amountOftimes == _amountOftimesDone)
             {
                 total = _pointsEarned + _totalScore + int.Parse(_bonusPoints);
+                _goalMadeList.RemoveAt(_index);
                 
             }
         else if (_amountOftimes != _amountOftimesDone)
             {
+                
+                
+                _goalMadeList.RemoveAt(_index);
+                _goalMadeList.Add($"{_typeOfGoal}:{_goalName},{_goalInfo},{_scoreGoal},{_bonusPoints},{_amountOftimes},{_amountOftimesDone}");
                 total = _pointsEarned + _totalScore;
-                _goalsRecordedList.Add(_goalName);
             }
         return total.ToString();
     }
        
-    public override string DisplayGoal()
+
+     public override void DisplayGoal()
     {
-        int amount = _goalsRecordedList.Count();
-        return $"{_goalName}({_goalInfo}) - {_amountOftimes}\\/ {amount.ToString()}";
-
-
-    }
-
-     public override void DisplayDone()
-    {
+        int amount = 0;
         
-        if (_amountOftimes == _amountOftimesDone)
+        if (_amountOftimes != _amountOftimesDone)
             {
-                int amount = _goalsRecordedList.Count();   
-                Console.WriteLine($"[X]{_goalName}({_goalInfo}) - {_amountOftimes}\\/ {amount.ToString()}");
+                
+                Console.WriteLine($"[ ]{_goalName}({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
                 
                 
             }
-        else if (_amountOftimes != _amountOftimesDone)
+        else if (_amountOftimes == _amountOftimesDone)
             {
-                int amount = _goalsRecordedList.Count();   
-                Console.WriteLine($"[ ]{_goalName}({_goalInfo}) - {_amountOftimes}\\/ {amount.ToString()}");
+                 
+                Console.WriteLine($"[X]{_goalName}({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
                 
             }
         
@@ -84,6 +82,6 @@ public class ChecklistGoal : GoalsDescription
     public override string SaveToFile()
     {
         int amount = _goalsRecordedList.Count();
-        return $"{_typeOfGoal}: {_goalName},{_goalInfo},{_scoreGoal},{_bonusPoints},{_amountOftimes},{amount.ToString()}";
+        return $"{_typeOfGoal}:{_goalName},{_goalInfo},{_scoreGoal},{_bonusPoints},{_amountOftimes},{amount.ToString()}";
     }
 }

@@ -16,6 +16,17 @@ public abstract class GoalsDescription
 
     protected int _pointsEarned;
 
+    protected int _index;
+    
+    public int GetIndex()
+    {
+        return _index;
+    }
+    public void SetIndex(int index)
+    {
+        _index = index;
+    }
+
     
     public int GetPointsEarned()
     {
@@ -81,7 +92,7 @@ public abstract class GoalsDescription
     
 
     // public abstract int AddGoal();
-    public abstract string DisplayGoal();
+    public abstract void DisplayGoal();
     public abstract string RecordEvent();
     public abstract string SaveToFile();
     public virtual void DisplayDone()
