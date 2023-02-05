@@ -66,14 +66,14 @@ public class ChecklistGoal : GoalsDescription
         if (_amountOftimes != _amountOftimesDone)
             {
                 
-                Console.WriteLine($"[ ]{_goalName}({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
+                Console.WriteLine($"[ ] {_goalName}({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
                 
                 
             }
         else if (_amountOftimes == _amountOftimesDone)
             {
                  
-                Console.WriteLine($"[X]{_goalName}({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
+                Console.WriteLine($"[X] {_goalName}({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
                 
             }
         

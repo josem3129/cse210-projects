@@ -1,0 +1,5 @@
+60
+Simple Goal:Give a talk,During sacrament when asked,30,False
+Eternal Goal:Read my scriptures,Read every night for 10 min,50
+Checklist Goal:Attend the temple,attend every month to the temple,30,500,3,0
+:read a book,read my harry potter book,,True

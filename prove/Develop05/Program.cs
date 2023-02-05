@@ -98,8 +98,9 @@ class Program
                                                 
                 break;
             case "2":
-           
-                Console.WriteLine(totalPoints);
+
+                Console.WriteLine($"Total Points: {totalPoints}");
+                
                 
                 foreach (string element in goalList)
                 {   
@@ -159,27 +160,30 @@ class Program
        
                 
 
-                    using (StreamWriter outputFile = new StreamWriter(fileName))
+                using (StreamWriter outputFile = new StreamWriter(fileName))
+                {
+                    outputFile.WriteLine(totalPoints);
+                    foreach (string file in goalList)
                     {
+                        outputFile.WriteLine(file);
                         
-                        foreach (string file in goalList)
-                        {
-                            outputFile.WriteLine(file);
-                            
 
-                        }
+                    }
+                Console.WriteLine("File Saved..\n");       
                         
                     
         }
                break;
             case "4":
-                string filename = "Goal.txt";
+                string filename = "Goals.txt";
                 string[] lines = System.IO.File.ReadAllLines(filename);
                 
+                totalPoints = int.Parse(lines[0]);
 
-                foreach (string line in lines)
+                for (int i = 1; i < lines.Count();  i++)
                 {
-                   goalList.Add(line);
+                    string goal = lines[i];
+                   goalList.Add(goal);
                 }
 
                 Console.WriteLine("File Loaded..\n");
