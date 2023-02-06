@@ -1,5 +1,6 @@
 public class ChecklistGoal : GoalsDescription
 {
+    // the check list goal find the bonus poins and also the amount of times that needs to be done and the times it has been done
     private string _bonusPoints;
     private string _amountOftimes;
     private string _amountOftimesDone;
@@ -38,19 +39,17 @@ public class ChecklistGoal : GoalsDescription
     {
         _bonusPoints = bonusPoints;
     }
+    //here we record when a goal is done and finds if the amount of times it has beens done and if it has there is bonus points. 
     public override string RecordEvent()
     {
         int total = 0;
         if (_amountOftimes == _amountOftimesDone)
             {
                 total = _pointsEarned + _totalScore + int.Parse(_bonusPoints);
-                _goalMadeList.RemoveAt(_index);
-                
+                                
             }
         else if (_amountOftimes != _amountOftimesDone)
             {
-                
-                
                 _goalMadeList.RemoveAt(_index);
                 _goalMadeList.Add($"{_typeOfGoal}:{_goalName},{_goalInfo},{_scoreGoal},{_bonusPoints},{_amountOftimes},{_amountOftimesDone}");
                 total = _pointsEarned + _totalScore;
@@ -58,15 +57,15 @@ public class ChecklistGoal : GoalsDescription
         return total.ToString();
     }
        
-
+// here w are also checking if the goal has been done comapring how many time its has been done to how many times needs to be done and then prints a formated goal shonig ether done or not 
      public override void DisplayGoal()
     {
-        int amount = 0;
+        
         
         if (_amountOftimes != _amountOftimesDone)
             {
                 
-                Console.WriteLine($"[ ] {_goalName}({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
+                Console.WriteLine($"[ ] {_goalName} ({_goalInfo}) - {_amountOftimesDone}/{_amountOftimes}");
                 
                 
             }
@@ -78,7 +77,7 @@ public class ChecklistGoal : GoalsDescription
             }
         
     }
-
+    // here is were we format the goal to send to list. 
     public override string SaveToFile()
     {
         int amount = _goalsRecordedList.Count();

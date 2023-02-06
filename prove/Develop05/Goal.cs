@@ -1,5 +1,7 @@
 public abstract class GoalsDescription 
 {
+    // here we hold alot od data 
+    // we look for each part of the goal 
     protected string _typeOfGoal;
     protected string _goalName;
 
@@ -91,7 +93,11 @@ public abstract class GoalsDescription
     }
     
 
-    // public abstract int AddGoal();
+    // here we have some methods that each goal share and can be molded to each need
+    // there is for displaying when is done or not 
+    // when they need be saved in a lisrt 
+    // also when the goal needs to be recorded that it was done
+
     public abstract void DisplayGoal();
     public abstract string RecordEvent();
     public abstract string SaveToFile();

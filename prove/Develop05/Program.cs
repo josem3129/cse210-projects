@@ -14,8 +14,9 @@ class Program
         int totalPoints = 0;
         do
         {
-        
-        Console.WriteLine("Menu Options:");
+        // menu options for user
+        Console.WriteLine($"\nYou have {totalPoints} points");
+        Console.WriteLine("\nMenu Options:");
         Console.WriteLine(" 1. Create New Goal");
         Console.WriteLine(" 2. List Goals");
         Console.WriteLine(" 3. Save Goals");
@@ -28,24 +29,25 @@ class Program
             {
             case "1":
                 
-                Console.WriteLine("");
+                // Here is were we have the choises of what type of goal we got.
                 Console.WriteLine("The type of Goals are:");
                 Console.WriteLine(" 1. Simple Goal");
                 Console.WriteLine(" 2. Eternal Goals");
                 Console.WriteLine(" 3. Checklist Goals");
-                Console.Write("Select a choice from the menu: ");
+                Console.Write("Which type of goal would you like to create?: ");
                 string goalChoise = Console.ReadLine();
                     switch(goalChoise) 
                 {
                 case "1":
+                // case 1 is simple goal 
                     simpleGoal.SetTypeOfGoal("Simple Goal");
-                    Console.WriteLine("What is the name of your goal?");
+                    Console.Write("What is the name of your goal? ");
                     string nameAnswer = Console.ReadLine();
                     simpleGoal.SetGoalName(nameAnswer);
-                    Console.WriteLine("What is a short description of it?");
+                    Console.Write("What is a short description of it? ");
                     string descriptionAnswer = Console.ReadLine();
                     simpleGoal.SetGoalInfo(descriptionAnswer);
-                    Console.WriteLine("What is the amount of points associated with this goal?");
+                    Console.Write("What is the amount of points associated with this goal? ");
                     string pointsAnswer = Console.ReadLine();
                     simpleGoal.SetScoreGoal(pointsAnswer);
                     simpleGoal.SetGoaldone(false);
@@ -54,15 +56,15 @@ class Program
                                     
                     break;
                 case "2":
-
+                    //case 2 is eternal goal and were we set all the user input in to the classes 
                     eternalGoal.SetTypeOfGoal("Eternal Goal");
-                    Console.WriteLine("What is the name of your goal?");
+                    Console.Write("What is the name of your goal? ");
                     string nameAnswer2 = Console.ReadLine();
                     eternalGoal.SetGoalName(nameAnswer2);
-                    Console.WriteLine("What is a short description of it?");
+                    Console.Write("What is a short description of it? ");
                     string descriptionAnswer2 = Console.ReadLine();
                     eternalGoal.SetGoalInfo(descriptionAnswer2);
-                    Console.WriteLine("What is the amount of points associated with this goal?");
+                    Console.Write("What is the amount of points associated with this goal? ");
                     string pointsAnswer2 = Console.ReadLine();
                     eternalGoal.SetScoreGoal(pointsAnswer2);
                     
@@ -70,20 +72,21 @@ class Program
                     
                     break;
                 case "3":
+                // case 3 is the check list goal
                     checklistGoal.SetTypeOfGoal("Checklist Goal");
-                    Console.WriteLine("What is the name of your goal?");
+                    Console.Write("What is the name of your goal? ");
                     string nameAnswer3 = Console.ReadLine();
                     checklistGoal.SetGoalName(nameAnswer3);
-                    Console.WriteLine("What is a short description of it?");
+                    Console.Write("What is a short description of it? ");
                     string descriptionAnswer3 = Console.ReadLine();
                     checklistGoal.SetGoalInfo(descriptionAnswer3);
-                    Console.WriteLine("What is the amount of points associated with this goal?");
+                    Console.Write("What is the amount of points associated with this goal? ");
                     string pointsAnswer3 = Console.ReadLine();
                     checklistGoal.SetScoreGoal(pointsAnswer3);
-                    Console.WriteLine("How many times does this goal need to be accomplished for a bonus?");
+                    Console.Write("How many times does this goal need to be accomplished for a bonus? ");
                     string amountOfTImes = Console.ReadLine();
                     checklistGoal.SetAmountOftimes(amountOfTImes);
-                    Console.Write("What is the bonuis for accomplishing it that many times?");
+                    Console.Write("What is the bonuis for accomplishing it that many times? ");
                     string bonus = Console.ReadLine();
                     checklistGoal.SetBonusPoints(bonus);
                     checklistGoal.SetGoalsRecordedList(completedGoal);
@@ -99,15 +102,18 @@ class Program
                 break;
             case "2":
 
-                Console.WriteLine($"Total Points: {totalPoints}");
-                
-                
+                //here is were we deplay the goal formated 
+                Console.WriteLine("The goals are:");
+                int displayCcount = 0;
                 foreach (string element in goalList)
                 {   
+                    displayCcount++;
+                    Console.Write($"{displayCcount}. ");
                     SimpleGoal simpleGoal2 = new SimpleGoal();
                     EternalGoal eternalGoal2 = new EternalGoal();
                     ChecklistGoal checklistGoal2 = new ChecklistGoal();
                     
+                    //loops through the list of goals and splits removing the elements that we need and setting it in the class
                     var item = element.Split(":");
                     var goal = item[1].Split(",");
 
@@ -156,7 +162,9 @@ class Program
                 break;
             case "3":
                 
-                string fileName = "Goals.txt";
+                // here we are saving the goal in to a file which the user geives name. 
+                Console.WriteLine("what is the filename for rhe goal file? ");
+                string fileName = Console.ReadLine();
        
                 
 
@@ -175,7 +183,9 @@ class Program
         }
                break;
             case "4":
-                string filename = "Goals.txt";
+            // here we load all the goals saved for the user
+                Console.WriteLine("what is the filename for rhe goal file? ");
+                string filename = Console.ReadLine();
                 string[] lines = System.IO.File.ReadAllLines(filename);
                 
                 totalPoints = int.Parse(lines[0]);
@@ -189,9 +199,12 @@ class Program
                 Console.WriteLine("File Loaded..\n");
                 break;
             case "5":
-
-                Console.WriteLine(totalPoints);
+                // here we saved record when a goals is done
+                Console.WriteLine("The goals are:");
                 int count = 0;
+                
+                // looking in through each loop and finding each part of the element we need by spliting it. 
+                // then if statment finds what kind of goal is and runs the class for that goal 
                 foreach (string element in goalList)
                 {   
                     var item = element.Split(":");
@@ -202,7 +215,7 @@ class Program
                     Console.WriteLine($" {count}. {goalName}");
                 }
 
-                Console.Write("Which goal did you accomplish?");
+                Console.Write("Which goal did you accomplish? ");
                 string answerGoal = Console.ReadLine();
                 var goalSelected = goalList[int.Parse(answerGoal) - 1];
                 var itemSplited = goalSelected.Split(":");
@@ -210,7 +223,7 @@ class Program
 
                 if (itemSplited[0] == "Simple Goal" && goalInfo[3] == "False")
                 {
-                    
+                    simpleGoal.SetTypeOfGoal(itemSplited[0]);
                     simpleGoal.SetGoalName(goalInfo[0]);
                     simpleGoal.SetGoalInfo(goalInfo[1]);
                     simpleGoal.SetGoalMadeList(goalList);
@@ -222,6 +235,7 @@ class Program
                 }
                 else if (itemSplited[0] == "Eternal Goal")
                 {
+                    eternalGoal.SetTypeOfGoal(itemSplited[0]);
                     eternalGoal.SetGoalMadeList(goalList);
                     eternalGoal.SetIndex(int.Parse(answerGoal) - 1);
                     eternalGoal.SetGoalName(goalInfo[0]);
@@ -233,6 +247,7 @@ class Program
                 else if (itemSplited[0] == "Checklist Goal")
                 {
                     int addedRecord = int.Parse(goalInfo[5]) + 1;
+                    checklistGoal.SetTypeOfGoal(itemSplited[0]);
                     checklistGoal.SetIndex(int.Parse(answerGoal) - 1);
                     checklistGoal.SetGoalMadeList(goalList);
                     checklistGoal.SetGoalInfo(goalInfo[1]);
@@ -246,6 +261,9 @@ class Program
                     checklistGoal.SetGoalName(goalInfo[0]);
                     totalPoints = int.Parse(checklistGoal.RecordEvent());                    
                 }
+                // here we tell the user how many points he got and how much he has
+                Console.WriteLine($"Congratulations! you have earned {goalInfo[2]}");
+                Console.WriteLine($"You now have {totalPoints} points.");
                 break;
             default:
                 break;
@@ -253,12 +271,8 @@ class Program
         }while (choise != "6");    
         
         
-        // Console.WriteLine(GetUserGoal(goal));
+        
         
     }
 
-    public static string GetUserGoal(GoalsDescription goalDescription)
-    {
-        return $"[] {goalDescription.GetTypeOfGoal()}: {goalDescription.GetGoalName()},{goalDescription.GetGoalInfo()},{goalDescription.GetScoreGoal()}";
-    }
 }

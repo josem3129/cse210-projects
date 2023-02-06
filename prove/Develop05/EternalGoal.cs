@@ -1,5 +1,8 @@
 public class EternalGoal : GoalsDescription
 {
+    // eteranl goal class records when a goal is done 
+    // here the goal also is displayed fromated 
+    // and also is formated to be saved in a list to later be saved in a file. 
     public override string RecordEvent()
     {
         
@@ -10,7 +13,7 @@ public class EternalGoal : GoalsDescription
     }
     public override void DisplayGoal()
     {
-        Console.WriteLine($"[ ] {_goalName},{_goalInfo}");
+        Console.WriteLine($"[ ] {_goalName} ({_goalInfo})");
     }
        public override string SaveToFile()
     {

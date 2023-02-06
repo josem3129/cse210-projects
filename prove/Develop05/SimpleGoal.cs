@@ -1,5 +1,6 @@
 public class SimpleGoal : GoalsDescription
 {
+    // here we is the simple goal and is how we can show if is done with a boolian 
     private bool _goalDone;
 
    
@@ -15,7 +16,7 @@ public class SimpleGoal : GoalsDescription
     {
         Console.WriteLine(_goalDone);        
     }
-    
+    // if the goal was done we show with a boolian by chaning it to be true 
     public override string RecordEvent()
     {
         _goalMadeList.RemoveAt(_index);
@@ -23,14 +24,15 @@ public class SimpleGoal : GoalsDescription
        int total = _pointsEarned + _totalScore;
         return total.ToString();
     }
+    //we display the goal if its done or not 
     public override void DisplayGoal()
     {
-        Console.WriteLine($"[ ]  {_goalName} ({_goalInfo})");
+        Console.WriteLine($"[ ] {_goalName} ({_goalInfo})");
     }
 
     public override void DisplayDone()
     {
-        Console.WriteLine($"[X] {_goalName},{_goalInfo}");
+        Console.WriteLine($"[X] {_goalName} ({_goalInfo}) ");
     }
 
     public override string SaveToFile()
