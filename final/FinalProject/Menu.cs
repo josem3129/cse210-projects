@@ -1,9 +1,8 @@
 class Menu
 {
-    
-
     private List<string> _mainMenu, _classMenu;
 
+    // here is the menu of the program that is used to direct user what to do
     public Menu()
     {
         _mainMenu = new List<string>
@@ -11,27 +10,28 @@ class Menu
             "\nMenu Options:",
             " 1. Class Entry",
             " 2. Show classes",
-            " 3. Attendance",
+            " 3. Progress",
             " 4. Save",
             " 5. Load",
             " 6. Edit clases",
-            " 7. Show Birthdates",
-            " 8. Quit"
+            " 7. Quit"
         };
 
         _classMenu = new List<string>
         {
-            "choose a class:",
+            "This are the avilable classes",
             " 1. Nusery",
             " 2. Sunbeams",
             " 3. CTR 4-5",
             " 4. CTR 6-7",
             " 5. Valiant 8-9",
             " 6. Valiant 10-11",
-            " 7. Done" 
+            " 7. Done",
+            "choose a class: "
         };
     }
 
+    //this displays the menu for the main prgram 
     public void DisplayMainMenu()
     {
         foreach(string menuItem in _mainMenu)
@@ -40,14 +40,25 @@ class Menu
         }
     }
 
+//Here we are priting the menu for the primary classes that used in 3 other ares.
     public void DisplayClassMenu()
     {
         foreach(string menuClass in _classMenu)
         {
-            Console.WriteLine(menuClass);
+            if (menuClass == "choose a class: ")
+            {
+                Console.Write(menuClass);
+            }
+            else if (menuClass != "choose a class: ")
+            {
+                Console.WriteLine(menuClass);
+
+            }
+             
         }
     }
 
+    // I added this waiting timer too give a loading and saving efect to the user. 
     public void WaitingTIme(int _waitDuration)
     {
         DateTime startTime = DateTime.Now;

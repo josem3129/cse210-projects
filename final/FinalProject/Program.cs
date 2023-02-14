@@ -7,6 +7,12 @@ class Program
         List<string> primaryClasses = new List<string>();
         string[] students = {};
         string choise = "";
+        Console.Clear();
+        Console.WriteLine("Welcome to the Primary program 3000");
+        Console.WriteLine("This program pupose is to help primary precidencies to keep track of their");
+        Console.WriteLine("primary classes and each student progress.");
+        Console.WriteLine("please choose from the following.");
+    
         do 
         {
             // using a try catch to find if user enter a valid choise 
@@ -33,8 +39,8 @@ class Program
                         string classChosen = "";
                         do
                         {
-                            menu.DisplayClassMenu();
-                            Console.Write("Choose a class: ");
+                            
+                            menu.DisplayClassMenu();                        
                             classChosen = Console.ReadLine();
 
                             switch(classChosen)
@@ -43,6 +49,7 @@ class Program
                                     nursery.SetStudentInfo(primaryClasses);
                                     nursery.SetClassName("Nursery");
                                     nursery.ToString();
+                                    Console.Clear();
                                 break;
                                 case "2":
                                     sunbeam.SetStudentInfo(primaryClasses);
@@ -76,8 +83,10 @@ class Program
                     
                     break;
 
-                    // show students in class with age
+                    // show students in class with age and their progress
                     case "2":
+
+                        Console.WriteLine();
                         foreach (string classTeacher in primaryClasses)
                         {
                             string[] classSplited = classTeacher.Split(":");
@@ -115,19 +124,108 @@ class Program
                         }
                     break;
 
+                    // #3 allows to add progress to a student in any class. 
                     case "3":
 
-                    break;
+                        Console.WriteLine("Which class would you like to add progess?");
+                        menu.DisplayClassMenu();
+                        string progressChosen = Console.ReadLine();
+                        
+                        
+
+                        switch(progressChosen)
+                        {
+                            case "1":
+                                foreach (string classTeacher in primaryClasses.ToList())
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+
+                                    if (classSplited[0] == "Nursery")
+                                    {
+                                        nursery.SetStudentInfo(primaryClasses);
+                                        nursery.SetClassINformation(classTeacher);
+                                        nursery.Progress();
+                                                                    
+                                    }
+                                }
+                            break;
+                            case "2":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "Sunbeams")
+                                        {
+                                            sunbeam.SetStudentInfo(primaryClasses);
+                                            sunbeam.SetClassINformation(classTeacher);
+                                            sunbeam.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "3":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "CTR4-5")
+                                        {
+                                            ctr1.SetStudentInfo(primaryClasses);
+                                            ctr1.SetClassINformation(classTeacher);
+                                            ctr1.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "4":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "CTR6-7")
+                                        {
+                                            ctr2.SetStudentInfo(primaryClasses);
+                                            ctr2.SetClassINformation(classTeacher);
+                                            ctr2.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "5":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "Valinats8-9")
+                                        {
+                                            valiant1.SetStudentInfo(primaryClasses);
+                                            valiant1.SetClassINformation(classTeacher);
+                                            valiant1.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "6":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "Valiants10-11")
+                                        {
+                                            valiant2.SetStudentInfo(primaryClasses);
+                                            valiant2.SetClassINformation(classTeacher);
+                                            valiant2.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                        }
+                        break;
                     // we save the data here in a file
                     case "4":
 
                     // here we are saving the goal in to a file which the user geives name. 
-                        // Console.WriteLine("what is the filename for the file? ");
-                        // string fileName = Console.ReadLine();
+                        Console.WriteLine("what is the filename for the file? ");
+                        string fileName = Console.ReadLine();
             
                         
 
-                        using (StreamWriter outputFile = new StreamWriter("primary.txt"))
+                        using (StreamWriter outputFile = new StreamWriter(fileName))
                         {
                             
                             foreach (string file in primaryClasses)
@@ -136,14 +234,15 @@ class Program
                             }    
 
                         }
+                        Console.Write("Saving..");  
                         menu.WaitingTIme(3);
-                        Console.WriteLine("File Saved..\n");       
+                        Console.WriteLine("\nFile Saved..\n");       
                     
                     break;
                     // here we load the file to be added in to list 
                     case "5":
 
-                        Console.WriteLine("what is the filename for rhe goal file? ");
+                        Console.Write("what is the filename for rhe goal file? ");
                         string filename = Console.ReadLine();
                         string[] lines = System.IO.File.ReadAllLines(filename);
                         
@@ -155,53 +254,108 @@ class Program
                             primaryClasses.Add(goal);
                         }
 
-                        Console.WriteLine("File Loaded..\n");
+                        Console.Write("Loading..");  
+                        menu.WaitingTIme(3);
+                        Console.WriteLine("\nFile loaded..\n");  
 
                     break;
 
                     case "6":
-                        foreach (string classTeacher in primaryClasses)
+                        // #6 allows to edit any class by ther add or remove from an existing class. 
+                        Console.Write("Which class would you like to edit?");
+                        menu.DisplayClassMenu();
+                        string editchosen = Console.ReadLine();
+                        
+                        
+                        // here we are looking for the class that user chose
+                        switch(editchosen)
                         {
-                            string[] classSplited = classTeacher.Split(":");
+                            case "1":
+                                foreach (string classTeacher in primaryClasses.ToList())
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
 
-                            if (classSplited[0] == "Nursery")
-                            {
-                                nursery.SetClassINformation(classTeacher);
-                                nursery.DisplayClass();
-                            }
-                            else if (classSplited[0] == "Sunbeams")
-                            {
-                                sunbeam.SetClassINformation(classTeacher);
-                                sunbeam.DisplayClass();
-                            }
-                            else if (classSplited[0] == "CTR4-5")
-                            {
-                                ctr1.SetClassINformation(classTeacher);
-                                ctr1.DisplayClass();
-                            }
-                            else if (classSplited[0] == "CTR6-7")
-                            {
-                                ctr2.SetClassINformation(classTeacher);
-                                ctr2.DisplayClass();
-                            }
-                            else if (classSplited[0] == "Valinats8-9")
-                            {
-                                valiant1.SetClassINformation(classTeacher);
-                                valiant1.DisplayClass();
-                            }
-                            else if (classSplited[0] == "Valiants10-11")
-                            {
-                                valiant2.SetClassINformation(classTeacher);
-                                valiant2.DisplayClass();
-                            }
-                        }
+                                    if (classSplited[0] == "Nursery")
+                                    {
+                                        nursery.SetStudentInfo(primaryClasses);
+                                        nursery.SetClassINformation(classTeacher);
+                                        nursery.ClassEdit();
+                                                                    
+                                    }
+                                }
+                            break;
+                            case "2":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "Sunbeams")
+                                        {
+                                            sunbeam.SetStudentInfo(primaryClasses);
+                                            sunbeam.SetClassINformation(classTeacher);
+                                            sunbeam.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "3":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "CTR4-5")
+                                        {
+                                            ctr1.SetStudentInfo(primaryClasses);
+                                            ctr1.SetClassINformation(classTeacher);
+                                            ctr1.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "4":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "CTR6-7")
+                                        {
+                                            ctr2.SetStudentInfo(primaryClasses);
+                                            ctr2.SetClassINformation(classTeacher);
+                                            ctr2.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "5":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "Valinats8-9")
+                                        {
+                                            valiant1.SetStudentInfo(primaryClasses);
+                                            valiant1.SetClassINformation(classTeacher);
+                                            valiant1.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            case "6":
+                                foreach (string classTeacher in primaryClasses)
+                                {
+                                    string[] classSplited = classTeacher.Split(":");
+                                    if (classSplited[0] == "Valiants10-11")
+                                        {
+                                            valiant2.SetStudentInfo(primaryClasses);
+                                            valiant2.SetClassINformation(classTeacher);
+                                            valiant2.ClassEdit();
+                                        }
+
+                                }
+                            break;
+                            default:
+                            break;
+                        }                       
+                                              
 
                     break;
-
-                    case "7":
                     
-                    break;
-
                     default:
                     break;
                 }
@@ -211,6 +365,6 @@ class Program
                 Console.WriteLine("Error -- please choose from menu");
             }
 
-        }while (choise != "8");
+        }while (choise != "7");
     }
 }
